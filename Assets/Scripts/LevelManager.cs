@@ -5,6 +5,11 @@ public class LevelManager : MonoBehaviour {
 
     public GameObject currentCheckpoint;
     private PlayerController Player;
+    public GameObject deathparticle;
+    public GameObject respawnparticle;
+    public float respawntime;
+    public int DeathPointPenalty;
+    private float GravitySave;
     
     
     // Use this for initialization
@@ -19,7 +24,24 @@ public class LevelManager : MonoBehaviour {
 
     public void RespawnPlayer()
     {
+        StartCoroutine("RespawnPlayerCo");
+    }
+
+    public IEnumerator RespawnPlayerCo()
+    {
+        Instantiate(deathparticle, Player.transform.position, Player.transform.rotation);
+        Player.enabled = false;
+        Player.GetComponent<Renderer>().enabled = false;
+        GravitySave = Player.GetComponent<Rigidbody2D>().gravityScale;
+        Player.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        Player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        ScoreManager.AddScore(-DeathPointPenalty);
         Debug.Log("Player Respawn");
+        yield return new WaitForSeconds(respawntime);
+        Player.GetComponent<Rigidbody2D>().gravityScale = GravitySave;
         Player.transform.position = currentCheckpoint.transform.position;
+        Player.enabled = true;
+        Player.GetComponent<Renderer>().enabled = true;
+        Instantiate(respawnparticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
     }
 }
