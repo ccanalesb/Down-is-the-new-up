@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 
     public float Speed;
     public float Jump;
+    private float Velocity;
     public Transform GroundCheck;
     public float GroundCheckRadius;
     public LayerMask WhatIsGround;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
         Grounded = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, WhatIsGround);
     }
+<<<<<<< HEAD
 	
 	// Update is called once per frame
 	void Update () {
@@ -46,6 +48,46 @@ public class PlayerController : MonoBehaviour {
 		}
 
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+=======
+
+    // Update is called once per frame
+    void Update() {
+
+
+        if (Grounded) {
+            DoubleJumped = false; };  // Double Jump 
+        anim.SetBool("Grounded", Grounded);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Grounded)
+        { JumpFunction(); }
+
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !DoubleJumped && !Grounded)   // Double Jump 
+        { JumpFunction(); // Double Jump
+            DoubleJumped = true; }  // Double Jump 
+
+
+        Velocity = 0f;  // Con esta nueva variable hacemos que no se dezlice el personaje en el piso al utilizar el Player Material en el BoxCollider para que se deslice por las paredes y no se quede pegado.
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        { //GetComponent<Rigidbody2D>().velocity = new Vector2(Speed, GetComponent<Rigidbody2D>().velocity.y);
+            Velocity = Speed;
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        { //GetComponent<Rigidbody2D>().velocity = new Vector2(-Speed, GetComponent<Rigidbody2D>().velocity.y);
+            Velocity = -Speed;
+        }
+
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Velocity, GetComponent<Rigidbody2D>().velocity.y); // Esto arregla el que no se dezlice el personaje, por eso se comenta lo de arriba.
+
+        anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+
+        if (GetComponent<Rigidbody2D>().velocity.x > 0) { transform.localScale = new Vector3(1f,1f,1f) ; }   //Dar vuelta el Sprite y todas las animaciones.
+        else if (GetComponent<Rigidbody2D>().velocity.x < 0) { transform.localScale = new Vector3(-1f,1f,1f) ; } // cont.
+
+>>>>>>> af20394a6d0f736a2b7a3b6b56c3e278d28fc4d6
     }
 
     public void JumpFunction() {
