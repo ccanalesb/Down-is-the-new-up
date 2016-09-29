@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour {
 
     private Animator anim;
 
+    public Transform FirePoint;
+    public GameObject LightingAttack;
+
 
 
 	// Use this for initialization
@@ -31,16 +34,16 @@ public class PlayerController : MonoBehaviour {
 
 
         if (Grounded) {
-            DoubleJumped = false; };  // Double Jump 
+            DoubleJumped = false; };  // Double Jump
         anim.SetBool("Grounded", Grounded);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && Grounded)
+        if (Input.GetKeyDown(KeyCode.Z) && Grounded)
         { JumpFunction(); }
 
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !DoubleJumped && !Grounded)   // Double Jump 
+        if (Input.GetKeyDown(KeyCode.Z) && !DoubleJumped && !Grounded)   // Double Jump
         { JumpFunction(); // Double Jump
-            DoubleJumped = true; }  // Double Jump 
+            DoubleJumped = true; }  // Double Jump
 
 
         Velocity = 0f;  // Con esta nueva variable hacemos que no se dezlice el personaje en el piso al utilizar el Player Material en el BoxCollider para que se deslice por las paredes y no se quede pegado.
@@ -60,9 +63,13 @@ public class PlayerController : MonoBehaviour {
 
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
-        if (GetComponent<Rigidbody2D>().velocity.x > 0) { transform.localScale = new Vector3(1f,1f,1f) ; }   //Dar vuelta el Sprite y todas las animaciones.
-        else if (GetComponent<Rigidbody2D>().velocity.x < 0) { transform.localScale = new Vector3(-1f,1f,1f) ; } // cont.
+        if (GetComponent<Rigidbody2D>().velocity.x > 0) { transform.localScale = new Vector3(0.8f,0.8f,0.8f) ; }   //Dar vuelta el Sprite y todas las animaciones.
+        else if (GetComponent<Rigidbody2D>().velocity.x < 0) { transform.localScale = new Vector3(-0.8f,0.8f,0.8f) ; } // cont.
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Instantiate(LightingAttack, FirePoint.position, FirePoint.rotation);
+        }
     }
 
     public void JumpFunction()

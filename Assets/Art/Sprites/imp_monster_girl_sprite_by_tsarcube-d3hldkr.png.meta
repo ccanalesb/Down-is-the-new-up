@@ -1,0 +1,367 @@
+fileFormatVersion: 2
+guid: 19a225b239f2dc84a9ccdc67d198027b
+timeCreated: 1474978157
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: imp_monster_girl_sprite_by_tsarcube-d3hldkr_0
+    21300002: imp_monster_girl_sprite_by_tsarcube-d3hldkr_1
+    21300004: imp_monster_girl_sprite_by_tsarcube-d3hldkr_2
+    21300006: imp_monster_girl_sprite_by_tsarcube-d3hldkr_3
+    21300008: imp_monster_girl_sprite_by_tsarcube-d3hldkr_4
+    21300010: imp_monster_girl_sprite_by_tsarcube-d3hldkr_5
+    21300012: imp_monster_girl_sprite_by_tsarcube-d3hldkr_6
+    21300014: imp_monster_girl_sprite_by_tsarcube-d3hldkr_7
+    21300016: imp_monster_girl_sprite_by_tsarcube-d3hldkr_8
+    21300018: imp_monster_girl_sprite_by_tsarcube-d3hldkr_9
+    21300020: imp_monster_girl_sprite_by_tsarcube-d3hldkr_10
+    21300022: imp_monster_girl_sprite_by_tsarcube-d3hldkr_11
+    21300024: imp_monster_girl_sprite_by_tsarcube-d3hldkr_12
+    21300026: imp_monster_girl_sprite_by_tsarcube-d3hldkr_13
+    21300028: imp_monster_girl_sprite_by_tsarcube-d3hldkr_14
+    21300030: imp_monster_girl_sprite_by_tsarcube-d3hldkr_15
+    21300032: imp_monster_girl_sprite_by_tsarcube-d3hldkr_16
+    21300034: imp_monster_girl_sprite_by_tsarcube-d3hldkr_17
+    21300036: imp_monster_girl_sprite_by_tsarcube-d3hldkr_18
+    21300038: imp_monster_girl_sprite_by_tsarcube-d3hldkr_19
+    21300040: imp_monster_girl_sprite_by_tsarcube-d3hldkr_20
+    21300042: imp_monster_girl_sprite_by_tsarcube-d3hldkr_21
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 192
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 203
+        width: 42
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 204
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 192
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_4
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 192
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 135
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_6
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 139
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_7
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 137
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_8
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 127
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_9
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 127
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_10
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 127
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_11
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 71
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_12
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 75
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_13
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 73
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_14
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 64
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_15
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 64
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_16
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 64
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_17
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 0
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_18
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 11
+        width: 42
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_19
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 12
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_20
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 0
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: imp_monster_girl_sprite_by_tsarcube-d3hldkr_21
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 0
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
