@@ -28,6 +28,8 @@ public class EnemyLifeManager : MonoBehaviour {
 
     public void GiveDamage(int DamageToGive)
     {
+
         EnemyLife -= DamageToGive;
+        GetComponent<AudioSource>().Play();
     }
-}
+} 

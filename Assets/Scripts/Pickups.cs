@@ -4,6 +4,7 @@ using System.Collections;
 public class Pickups : MonoBehaviour {
 
     public int PointsToAdd; 
+    public AudioSource coinSound;
 
     void OnTriggerEnter2D (Collider2D Other)
     {
@@ -12,6 +13,8 @@ public class Pickups : MonoBehaviour {
             return;
 
         ScoreManager.AddScore(PointsToAdd);
+        coinSound.Play();
+
 
         Destroy(gameObject);
     }

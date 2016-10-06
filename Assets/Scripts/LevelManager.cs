@@ -48,6 +48,7 @@ public class LevelManager : MonoBehaviour {
         yield return new WaitForSeconds(respawntime);
         Player.GetComponent<Rigidbody2D>().gravityScale = GravitySave;
         Player.transform.position = currentCheckpoint.transform.position;
+        Player.KnockbackCount = 0;
         Player.GetComponent<Renderer>().enabled = true;
         Player.enabled = true;
 

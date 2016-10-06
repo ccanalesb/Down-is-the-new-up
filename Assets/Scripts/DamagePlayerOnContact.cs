@@ -20,7 +20,22 @@ public class DamagePlayerOnContact : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player") { LifeManager.DamagePlayer(Damage); }
+        if (other.name == "Player") 
+        {
+
+         LifeManager.DamagePlayer(Damage); 
+         other.GetComponent<AudioSource>().Play();
+
+         var player = other.GetComponent<PlayerController>();
+         player.KnockbackCount = player.KnockbackLenght;
+
+         if(other.transform.position.x < transform.position.x)
+         player.RightKnock = true;
+
+         else 
+         player.RightKnock = false;
+
+         }
 
     }
 }

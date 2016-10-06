@@ -17,6 +17,18 @@ public class PlayerController : MonoBehaviour {
     public Transform FirePoint;
     public GameObject LightingAttack;
 
+    public AudioSource JumpSound;
+    public AudioSource KiSound;
+
+    public float Knockback;
+    public float KnockbackCount;
+    public float KnockbackLenght;
+    public bool RightKnock;
+
+    public float KiDelay;
+    private float KiDelayCounter;
+    
+
 
 
 	// Use this for initialization
@@ -38,12 +50,18 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("Grounded", Grounded);
 
         if (Input.GetKeyDown(KeyCode.Z) && Grounded)
-        { JumpFunction(); }
+        {
+          JumpFunction();
+          JumpSound.Play(); 
+         }
 
 
         if (Input.GetKeyDown(KeyCode.Z) && !DoubleJumped && !Grounded)   // Double Jump
-        { JumpFunction(); // Double Jump
-            DoubleJumped = true; }  // Double Jump
+        { JumpFunction();
+          JumpSound.Play();
+
+          DoubleJumped = true; 
+         }  // Double Jump
 
 
         Velocity = 0f;  // Con esta nueva variable hacemos que no se dezlice el personaje en el piso al utilizar el Player Material en el BoxCollider para que se deslice por las paredes y no se quede pegado.
@@ -51,6 +69,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.RightArrow))
         { //GetComponent<Rigidbody2D>().velocity = new Vector2(Speed, GetComponent<Rigidbody2D>().velocity.y);
             Velocity = Speed;
+
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -59,8 +78,16 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Velocity, GetComponent<Rigidbody2D>().velocity.y); // Esto arregla el que no se dezlice el personaje, por eso se comenta lo de arriba.
+        if(KnockbackCount <= 0)
+          { GetComponent<Rigidbody2D>().velocity = new Vector2(Velocity, GetComponent<Rigidbody2D>().velocity.y); } // Esto arregla el que no se dezlice el personaje, por eso se comenta lo de arriba.
+         else {
+            if(RightKnock)
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-Knockback, Knockback);
+            if(!RightKnock)
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Knockback,Knockback);
 
+            KnockbackCount -= Time.deltaTime;
+         }
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
         if (GetComponent<Rigidbody2D>().velocity.x > 0) { transform.localScale = new Vector3(0.8f,0.8f,0.8f) ; }   //Dar vuelta el Sprite y todas las animaciones.
@@ -69,6 +96,29 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.X))
         {
             Instantiate(LightingAttack, FirePoint.position, FirePoint.rotation);
+        }
+        
+        if(anim.GetBool("Ki"))
+        anim.SetBool("Ki",false);
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            anim.SetBool("Ki",true);
+          KiSound.Play();
+         KiDelayCounter = KiDelay;
+        }
+
+        if(Input.GetKey(KeyCode.C))
+        {
+            
+            KiDelayCounter -= Time.deltaTime;
+
+            if(KiDelayCounter <= 0)
+             {
+               KiDelayCounter = KiDelay;
+               anim.SetBool("Ki",true);
+               KiSound.Play();
+             }
         }
     }
 

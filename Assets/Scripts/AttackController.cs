@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AttackController : MonoBehaviour {
@@ -17,6 +17,7 @@ public class AttackController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = FindObjectOfType<PlayerController>();
+        
 
         if (player.transform.localScale.x < 0)
             AttackSpeed = -AttackSpeed;
