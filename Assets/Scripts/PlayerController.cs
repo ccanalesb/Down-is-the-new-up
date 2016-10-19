@@ -27,13 +27,26 @@ public class PlayerController : MonoBehaviour {
 
     public float KiDelay;
     private float KiDelayCounter;
+    private bool isReady;
+
+    public TextBoxManager theTextBox;
+    
+    
     
 
 
 
 	// Use this for initialization
 	void Start () {
+
+        theTextBox = FindObjectOfType<TextBoxManager>();
+
+
         anim = GetComponent<Animator>();
+
+        isReady = true;
+
+        KiDelayCounter = KiDelay;
 	}
 
     void FixedUpdate() {
@@ -45,9 +58,28 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
 
+        
+
+        if(!isReady)
+        {
+           KiDelayCounter -= Time.deltaTime; 
+        }
+
+        if(KiDelayCounter <= 0)
+        {
+            isReady = true;
+            KiDelayCounter = KiDelay;
+        }
+
+
         if (Grounded) {
             DoubleJumped = false; };  // Double Jump
         anim.SetBool("Grounded", Grounded);
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            theTextBox.DisableTextBox();
+        }
 
         if (Input.GetKeyDown(KeyCode.Z) && Grounded)
         {
@@ -101,21 +133,23 @@ public class PlayerController : MonoBehaviour {
         if(anim.GetBool("Ki"))
         anim.SetBool("Ki",false);
 
-        if(Input.GetKeyDown(KeyCode.C))
+        /*if(Input.GetKeyDown(KeyCode.C))
         {
             anim.SetBool("Ki",true);
           KiSound.Play();
          KiDelayCounter = KiDelay;
-        }
+        } */
 
         if(Input.GetKey(KeyCode.C))
         {
             
-            KiDelayCounter -= Time.deltaTime;
+            //KiDelayCounter -= Time.deltaTime;
 
-            if(KiDelayCounter <= 0)
+            //if(KiDelayCounter <= 0)
+             if(isReady)
              {
-               KiDelayCounter = KiDelay;
+               isReady = false;
+               //KiDelayCounter = KiDelay;
                anim.SetBool("Ki",true);
                KiSound.Play();
              }
