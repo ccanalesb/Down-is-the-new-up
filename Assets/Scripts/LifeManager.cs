@@ -10,6 +10,7 @@ public class LifeManager : MonoBehaviour {
     Text LifeQuality;
     private LevelManager LevelManag;
     public bool isDead;
+    private LivesManager liveSystem;
     
     
     // Use this for initialization
@@ -18,6 +19,8 @@ public class LifeManager : MonoBehaviour {
         PlayerLife = MaxPlayerLife;
         LevelManag = FindObjectOfType<LevelManager>();
         isDead = false;
+
+        liveSystem = FindObjectOfType<LivesManager>();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +30,7 @@ public class LifeManager : MonoBehaviour {
         {
             PlayerLife = 0;
             LevelManag.RespawnPlayer();
+            liveSystem.TakeLive();
             isDead = true;
         }
         LifeQuality.text = "" + PlayerLife;

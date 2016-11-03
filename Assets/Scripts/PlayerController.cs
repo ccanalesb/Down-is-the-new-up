@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
     
     
     
+    
 
 
 
@@ -58,6 +59,9 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
 
+
+        if(Time.timeScale == 0f)
+        {return;}
         
 
         if(!isReady)
@@ -76,19 +80,19 @@ public class PlayerController : MonoBehaviour {
             DoubleJumped = false; };  // Double Jump
         anim.SetBool("Grounded", Grounded);
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetButtonDown("Submit"))
         {
             theTextBox.DisableTextBox();
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) && Grounded)
+        if (Input.GetButtonDown("Jump") && Grounded)
         {
           JumpFunction();
           JumpSound.Play(); 
          }
 
 
-        if (Input.GetKeyDown(KeyCode.Z) && !DoubleJumped && !Grounded)   // Double Jump
+        if (Input.GetButtonDown("Jump") && !DoubleJumped && !Grounded)   // Double Jump
         { JumpFunction();
           JumpSound.Play();
 
@@ -96,18 +100,19 @@ public class PlayerController : MonoBehaviour {
          }  // Double Jump
 
 
-        Velocity = 0f;  // Con esta nueva variable hacemos que no se dezlice el personaje en el piso al utilizar el Player Material en el BoxCollider para que se deslice por las paredes y no se quede pegado.
+        //Velocity = 0f;  // Con esta nueva variable hacemos que no se dezlice el personaje en el piso al utilizar el Player Material en el BoxCollider para que se deslice por las paredes y no se quede pegado.
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        { //GetComponent<Rigidbody2D>().velocity = new Vector2(Speed, GetComponent<Rigidbody2D>().velocity.y);
+        /*if (Input.GetKey(KeyCode.RightArrow))
+        { 
             Velocity = Speed;
 
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
-        { //GetComponent<Rigidbody2D>().velocity = new Vector2(-Speed, GetComponent<Rigidbody2D>().velocity.y);
+        { 
             Velocity = -Speed;
-        }
+        }*/
+        Velocity = Speed * Input.GetAxisRaw("Horizontal");
 
 
         if(KnockbackCount <= 0)
@@ -125,7 +130,7 @@ public class PlayerController : MonoBehaviour {
         if (GetComponent<Rigidbody2D>().velocity.x > 0) { transform.localScale = new Vector3(0.8f,0.8f,0.8f) ; }   //Dar vuelta el Sprite y todas las animaciones.
         else if (GetComponent<Rigidbody2D>().velocity.x < 0) { transform.localScale = new Vector3(-0.8f,0.8f,0.8f) ; } // cont.
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(LightingAttack, FirePoint.position, FirePoint.rotation);
         }
@@ -140,7 +145,7 @@ public class PlayerController : MonoBehaviour {
          KiDelayCounter = KiDelay;
         } */
 
-        if(Input.GetKey(KeyCode.C))
+        if(Input.GetButtonDown("Fire2"))
         {
             
             //KiDelayCounter -= Time.deltaTime;

@@ -6,10 +6,10 @@ public class Pickups : MonoBehaviour {
     public int PointsToAdd; 
     public AudioSource coinSound;
 
-    void OnTriggerEnter2D (Collider2D Other)
+    void OnTriggerEnter2D (Collider2D other)
     {
 
-        if (Other.GetComponent<PlayerController>() == null)  // Evitar que otra persona aparte del PLAYER tome las hueas.
+        if (other.GetComponent<PlayerController>() == null)  // Evitar que otra persona aparte del PLAYER tome las hueas.
             return;
 
         ScoreManager.AddScore(PointsToAdd);

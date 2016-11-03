@@ -16,6 +16,7 @@ public class TextBoxManager : MonoBehaviour {
 	public PlayerController player;
 
 	public bool isActive;
+	
 
 	
 
@@ -36,6 +37,7 @@ public class TextBoxManager : MonoBehaviour {
 		if(isActive)
 		{
 			EnableTextBox();
+
 		}
 		else
 		{
@@ -57,7 +59,7 @@ public class TextBoxManager : MonoBehaviour {
 
 		theText.text =  textLines[currentLine];
 
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(Input.GetButtonDown("Next"))
 		{
 			currentLine += 1;
 		}
@@ -74,6 +76,11 @@ public class TextBoxManager : MonoBehaviour {
 	{
 		textBox.SetActive(true);
 		isActive = true;
+		
+
+		
+
+
 
 		
 	}
@@ -82,6 +89,8 @@ public class TextBoxManager : MonoBehaviour {
 	{
 			textBox.SetActive(false);
 			isActive = false;
+			
+			
 			
 	}
 
