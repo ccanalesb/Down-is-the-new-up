@@ -41,6 +41,11 @@ public class AttackController : MonoBehaviour {
 
 
         }
+
+        if(other.tag == "Boss")
+        {
+            other.GetComponent<BossHealthManager>().GiveDamage(damage);
+        }
         Instantiate(ImpactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }

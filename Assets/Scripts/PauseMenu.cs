@@ -30,11 +30,15 @@ public class PauseMenu : MonoBehaviour {
 
 		if(Input.GetButtonDown("Cancel"))
 		{
-			isPaused = !isPaused;
+			PauseUnpause();
 		}
 	}
 
+	public void PauseUnpause()
+	{
+		isPaused = !isPaused;
 
+	}
 
 	public void MainMenu()
 	{

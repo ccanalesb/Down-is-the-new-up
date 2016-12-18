@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class LivesManager : MonoBehaviour {
 
 	
-	public int startingLives;
+	//public int startingLives;
 	private int liveCounter;
 	private Text theText;
 	public GameObject gameOver;
@@ -19,7 +19,7 @@ public class LivesManager : MonoBehaviour {
 	void Start () {
 
 		theText = GetComponent<Text>();
-		liveCounter = startingLives;
+		liveCounter = PlayerPrefs.GetInt("PlayerCurrentLives");
 		player = FindObjectOfType<PlayerController>();
 		
 	
@@ -51,10 +51,12 @@ public class LivesManager : MonoBehaviour {
 	public void GiveLive()
 	{
 		liveCounter++;
+		PlayerPrefs.SetInt("PlayerCurrentLives",liveCounter);
 	}
 
 	public void TakeLive()
 	{
 		liveCounter--;
+		PlayerPrefs.SetInt("PlayerCurrentLives", liveCounter);
 	}
 }

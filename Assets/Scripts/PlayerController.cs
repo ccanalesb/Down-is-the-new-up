@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     public LayerMask WhatIsGround;
     private bool Grounded;
     private bool DoubleJumped;
+    
+    
 
     private Animator anim;
 
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     public TextBoxManager theTextBox;
     
-    
+    private MovPlatform currentPlatform;
     
     
 
@@ -64,16 +66,7 @@ public class PlayerController : MonoBehaviour {
         {return;}
         
 
-        if(!isReady)
-        {
-           KiDelayCounter -= Time.deltaTime; 
-        }
-
-        if(KiDelayCounter <= 0)
-        {
-            isReady = true;
-            KiDelayCounter = KiDelay;
-        }
+      
 
 
         if (Grounded) {
@@ -84,6 +77,9 @@ public class PlayerController : MonoBehaviour {
         {
             theTextBox.DisableTextBox();
         }
+
+
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
 
         if (Input.GetButtonDown("Jump") && Grounded)
         {
@@ -112,7 +108,12 @@ public class PlayerController : MonoBehaviour {
         { 
             Velocity = -Speed;
         }*/
-        Velocity = Speed * Input.GetAxisRaw("Horizontal");
+        
+        //Velocity = Speed * Input.GetAxisRaw("Horizontal");
+        Move(Input.GetAxisRaw("Horizontal"));
+        
+#endif
+
 
 
         if(KnockbackCount <= 0)
@@ -130,13 +131,32 @@ public class PlayerController : MonoBehaviour {
         if (GetComponent<Rigidbody2D>().velocity.x > 0) { transform.localScale = new Vector3(0.8f,0.8f,0.8f) ; }   //Dar vuelta el Sprite y todas las animaciones.
         else if (GetComponent<Rigidbody2D>().velocity.x < 0) { transform.localScale = new Vector3(-0.8f,0.8f,0.8f) ; } // cont.
 
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
+
+
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(LightingAttack, FirePoint.position, FirePoint.rotation);
+            //Instantiate(LightingAttack, FirePoint.position, FirePoint.rotation);
+            FireGun();
         }
         
+        if(!isReady)
+        {
+           KiDelayCounter -= Time.deltaTime; 
+        }
+
+        if(KiDelayCounter <= 0)
+        {
+            isReady = true;
+            KiDelayCounter = KiDelay;
+        }
+
+
         if(anim.GetBool("Ki"))
-        anim.SetBool("Ki",false);
+            {
+                //anim.SetBool("Ki",false);
+                ResetKi();
+            }
 
         /*if(Input.GetKeyDown(KeyCode.C))
         {
@@ -155,12 +175,85 @@ public class PlayerController : MonoBehaviour {
              {
                isReady = false;
                //KiDelayCounter = KiDelay;
-               anim.SetBool("Ki",true);
-               KiSound.Play();
+               //anim.SetBool("Ki",true);
+               KiAttack();
+               
+               
              }
         }
+
+
+#endif 
+
+
+
+
     }
 
+    public void FireGun()
+    {
+        Instantiate(LightingAttack, FirePoint.position, FirePoint.rotation);
+    }
+
+    public void KiAttack()
+    {
+        anim.SetBool("Ki",true);
+        KiSound.Play();  
+       
+    }
+
+    public void ResetKi()
+    {
+        anim.SetBool("Ki",false);
+    }
+
+    public void Move(float moveInput)
+    {
+    	 Velocity = Speed * moveInput;
+    }
+
+
     public void JumpFunction()
-    { GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, Jump); }
+    { 
+        //GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, Jump);
+
+        if (Grounded)
+        {
+          //JumpFunction();
+          GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, Jump);
+          JumpSound.Play(); 
+         }
+
+
+        if (!DoubleJumped && !Grounded)   // Double Jump
+        { //JumpFunction();
+          GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, Jump);  
+          JumpSound.Play();
+
+          DoubleJumped = true; 
+         }  // Double Jump
+     }
+
+
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+
+        if(other.transform.tag == "Mov Platform")
+        {
+            var correct = new GameObject("Correct");
+            correct.transform.parent = other.transform;
+            correct.transform.localScale = new Vector3(1/other.transform.localScale.x, 1/other.transform.localScale.y, 1/other.transform.localScale.z);
+            transform.parent = correct.transform;
+            
+        }   
+    }
+
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.transform.tag == "Mov Platform")
+        {transform.parent = null;
+        Destroy(other.transform.Find("Correct").gameObject);}
+    }
 }

@@ -14,6 +14,10 @@ public class TextBoxManager : MonoBehaviour {
 	public int currentLine;
 	public int endAtLine;
 	public PlayerController player;
+	private bool isTyping = false;
+	private bool cancelTyping = false;
+
+	public float typeSpeed;
 
 	public bool isActive;
 	
@@ -57,41 +61,73 @@ public class TextBoxManager : MonoBehaviour {
 		}
 
 
-		theText.text =  textLines[currentLine];
+		//theText.text =  textLines[currentLine];   //Este lo usaba antes del TextScroll
 
 		if(Input.GetButtonDown("Next"))
 		{
-			currentLine += 1;
+			NextDialog();
+
 		}
 
-		if(currentLine > endAtLine)
+		
+
+
+	}
+
+
+	public void NextDialog()
+	{
+		if(!isTyping)
+			{
+				currentLine += 1;
+
+				if(currentLine > endAtLine)
+				{
+					DisableTextBox();
+				}	
+
+				else
+				{
+					StartCoroutine(TextScroll(textLines[currentLine])); 
+				}
+			}
+			
+			else if (isTyping && !cancelTyping)
+			{
+				cancelTyping = true;
+			}
+	}
+
+	private IEnumerator TextScroll (string lineOfText)
+	{
+		int letter = 0;
+		theText.text = "";
+		isTyping = true;
+		cancelTyping = false;
+		while(isTyping && !cancelTyping && (letter < lineOfText.Length - 1))
 		{
-			DisableTextBox();
+			theText.text += lineOfText[letter];
+			letter += 1;
+			yield return new WaitForSeconds(typeSpeed);
 		}
-
-
+		theText.text = lineOfText;
+		isTyping = false;
+		cancelTyping = false;
 	}
 
 	public void EnableTextBox()
 	{
 		textBox.SetActive(true);
 		isActive = true;
-		
+		StartCoroutine(TextScroll(textLines[currentLine])); 
 
-		
-
-
-
-		
 	}
 
 	public void DisableTextBox()
 	{
 			textBox.SetActive(false);
 			isActive = false;
-			
-			
-			
+				
 	}
 
 	public void ReloadScript(TextAsset theText)

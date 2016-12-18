@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LevelLoader : MonoBehaviour {
 
-	private bool PlayerInZone;
+	public bool PlayerInZone;
 	public string LevelToLoad;
 
 
@@ -22,6 +22,11 @@ public class LevelLoader : MonoBehaviour {
 			Application.LoadLevel(LevelToLoad);
 		}
 	
+	}
+
+	public void LoadLevel()
+	{
+		Application.LoadLevel(LevelToLoad);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
